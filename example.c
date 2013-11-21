@@ -1,4 +1,3 @@
-/* compile with: gcc -o example example.c -L. -Isrc/ -lmcp23s17 */
 #include <stdio.h>
 #include <unistd.h>
 #include "mcp23s17.h"
@@ -13,13 +12,13 @@ int main(void)
     int mcp23s17_fd = mcp23s17_open(bus, chip_select);
 
     // config register
-    uint8_t ioconfig = BANK_OFF | \
-                       INT_MIRROR_OFF | \
-                       SEQOP_OFF | \
-                       DISSLW_OFF | \
-                       HAEN_ON | \
-                       ODR_OFF | \
-                       INTPOL_LOW;
+    const uint8_t ioconfig = BANK_OFF | \
+                             INT_MIRROR_OFF | \
+                             SEQOP_OFF | \
+                             DISSLW_OFF | \
+                             HAEN_ON | \
+                             ODR_OFF | \
+                             INTPOL_LOW;
     mcp23s17_write_reg(ioconfig, IOCON, hw_addr, mcp23s17_fd);
 
     // I/O direction

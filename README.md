@@ -9,7 +9,11 @@ Build the library:
 
     $ make
 
-This creates the library `libmcp23s17.a`. Include it in your project with:
+This creates the library `libmcp23s17.a`. Build the example (using PiFace Digital):
+
+    $ make example
+
+Include the library in your project with:
 
     $ gcc -o example example.c -Isrc/ -L. -lmcp23s17
 
@@ -19,6 +23,5 @@ Todo
 ----
 Feel free to contribute!
 
-- Documentation (Doxygen? Good comments?)
 - Debian install
 - Interrupts (using epoll?)

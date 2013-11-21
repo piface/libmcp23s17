@@ -2,14 +2,15 @@
  * A simple static library for controlling an MCP23S17 port expander over SPI.
  * Datasheet: http://ww1.microchip.com/downloads/en/devicedoc/21952b.pdf
  */
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #ifndef _MCP23S17_H
 #define _MCP23S17_H
 
 #include <stdint.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 #define WRITE_CMD 0
 #define READ_CMD 1
@@ -53,15 +54,68 @@ extern "C" {
 #define INTPOL_HIGH 0x02  // interupt polarity
 #define INTPOL_LOW 0x00
 
-
+/**
+ * Returns a file descriptor for the SPI device through which the
+ * MCP23S17 port expander can be accessed.
+ *
+ * @param bus The SPI bus.
+ * @param chip_select The SPI chip select.
+ */
 int mcp23s17_open(int bus, int chip_select);
+
+/**
+ * Returns the 8 bit value from the register specified. Must also specify
+ * which hardware address and file descriptor to use.
+ *
+ * @param reg The register to read from (example: IODIRA, GPIOA).
+ * @param hw_addr The hardware address of the MCP23S17.
+ * @param fd The file descriptor returned from <mcp23s17_open>"()".
+ */
 uint8_t mcp23s17_read_reg(uint8_t reg, uint8_t hw_addr, int fd);
-int mcp23s17_write_reg(uint8_t data, uint8_t reg, uint8_t hw_addr, int fd);
-static uint8_t get_spi_control_byte(uint8_t rw_cmd, uint8_t hw_addr);
 
+/**
+ * Writes an 8 bit value to the register specified. Must also specify
+ * which hardware address and file descriptor to use.
+ *
+ * @param data The data byte to be written.
+ * @param reg The register to write to (example: IODIRA, GPIOA).
+ * @param hw_addr The hardware address of the MCP23S17.
+ * @param fd The file descriptor returned from <mcp23s17_open>"()".
+ */
+void mcp23s17_write_reg(uint8_t data, uint8_t reg, uint8_t hw_addr, int fd);
 
-#endif
+/**
+ * Reads a single bit from the register specified. Must also specify
+ * which hardware address and file descriptor to use.
+ *
+ * @param bit_num The bit number to read.
+ * @param reg The register to read from (example: IODIRA, GPIOA).
+ * @param hw_addr The hardware address of the MCP23S17.
+ * @param fd The file descriptor returned from <mcp23s17_open>"()".
+ */
+uint8_t mcp23s17_read_bit(uint8_t bit_num,
+                          uint8_t reg,
+                          uint8_t hw_addr,
+                          int fd);
+
+/**
+ * Writes a single bit to the register specified. Must also specify
+ * which hardware address and file descriptor to use.
+ *
+ * @param data The data to write.
+ * @param bit_num The bit number to write to.
+ * @param reg The register to write to (example: IODIRA, GPIOA).
+ * @param hw_addr The hardware address of the MCP23S17.
+ * @param fd The file descriptor returned from <mcp23s17_open>"()".
+ */
+void mcp23s17_write_bit(uint8_t data,
+                        uint8_t bit_num,
+                        uint8_t reg,
+                        uint8_t hw_addr,
+                        int fd);
 
 #ifdef __cplusplus
 }
+#endif
+
 #endif
