@@ -26,23 +26,23 @@ int mcp23s17_open(int bus, int chip_select)
     // open
     if ((fd = open(spidev[bus][chip_select], O_RDWR)) < 0) {
         fprintf(stderr,
-                "mcp23s17_open: ERROR Could not open SPI device (%s).",
+                "mcp23s17_open: ERROR Could not open SPI device (%s).\n",
                 spidev[bus][chip_select]);
         return -1;
     }
 
     // initialise
     if (ioctl(fd, SPI_IOC_WR_MODE, &spi_mode) < 0) {
-        fprintf(stderr, "mcp23s17_open: ERROR Could not set SPI mode.");
+        fprintf(stderr, "mcp23s17_open: ERROR Could not set SPI mode.\n");
         return -1;
     }
     if (ioctl(fd, SPI_IOC_WR_BITS_PER_WORD, &spi_bpw) < 0) {
         fprintf(stderr,
-                "mcp23s17_open: ERROR Could not set SPI bits per word.");
+                "mcp23s17_open: ERROR Could not set SPI bits per word.\n");
         return -1;
     }
     if (ioctl(fd, SPI_IOC_WR_MAX_SPEED_HZ, &spi_speed) < 0) {
-        fprintf(stderr, "mcp23s17_open: ERROR Could not set SPI speed.");
+        fprintf(stderr, "mcp23s17_open: ERROR Could not set SPI speed.\n");
         return -1;
     }
 
@@ -67,7 +67,7 @@ uint8_t mcp23s17_read_reg(uint8_t reg, uint8_t hw_addr, int fd)
     if ((ioctl(fd, SPI_IOC_MESSAGE(1), &spi) < 0)) {
         fprintf(stderr,
                 "mcp23s17_read_reg: There was a error during the SPI "
-                "transaction.");
+                "transaction.\n");
         return -1;
     }
 
@@ -93,7 +93,7 @@ void mcp23s17_write_reg(uint8_t data, uint8_t reg, uint8_t hw_addr, int fd)
     if ((ioctl(fd, SPI_IOC_MESSAGE(1), &spi) < 0)) {
         fprintf(stderr,
                 "mcp23s17_write_reg: There was a error during the SPI "
-                "transaction.");
+                "transaction.\n");
     }
 }
 
