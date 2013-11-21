@@ -41,7 +41,7 @@ distclean: clean
 	rm -f $(BINARY)
 
 example: example.c
-	gcc -o example example.c -Isrc/ -lmcp23s17
+	gcc -o example example.c -Isrc/ -L. -lmcp23s17
 
 clean:
 	rm -f $(OBJECTS)
