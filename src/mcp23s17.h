@@ -1,5 +1,8 @@
-/* mcp23s17.h
- * A simple static library for controlling an MCP23S17 port expander over SPI.
+/**
+ * @file  mcp23s17.h
+ * @brief A simple static library for controlling an MCP23S17 port
+ *        expander over SPI.
+ *
  * Datasheet: http://ww1.microchip.com/downloads/en/devicedoc/21952b.pdf
  *
  * Copyright (C) 2013 Thomas Preston <thomas.preston@openlx.org.uk>

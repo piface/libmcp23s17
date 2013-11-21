@@ -3,25 +3,22 @@ libmcp23s17
 A simple library for accessing the MCP23S17 port expander through SPI. See
 `example.c` for ideas on how to use.
 
-Use
----
-Build the library:
+Documentation
+-------------
 
+[http://piface.github.io/piface/libmcp23s17](http://piface.github.io/piface/libmcp23s17)
+
+Build the docs with:
+
+    $ git clone https://github.com/piface/libmcp23s17.git
+    $ cd libmcp23s17/docs/
+    $ doxygen mcp23s17-doc.conf
+
+To view as HTML, point your browser to `libmcp23s17/docs/html/index.html`.
+
+To view as PDF:
+
+    $ cd latex/
     $ make
 
-This creates the library `libmcp23s17.a`. Build the example (using PiFace Digital):
-
-    $ make example
-
-Include the library in your project with:
-
-    $ gcc -o example example.c -Isrc/ -L. -lmcp23s17
-
-`-Isrc/` is for including the header file.
-
-Todo
-----
-Feel free to contribute!
-
-- Debian install
-- Interrupts (using epoll?)
+The pdf is called `refman.pdf`.
