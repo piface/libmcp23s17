@@ -1,5 +1,5 @@
 /**
-@mainpage libmcp23s17 - A simple C library for the MCP23S17 port expander.
+@mainpage
 
 [mcp23s17.h](mcp23s17_8h.html)
 
