@@ -97,9 +97,9 @@ void mcp23s17_write_reg(uint8_t data, uint8_t reg, uint8_t hw_addr, int fd)
 }
 
 uint8_t mcp23s17_read_bit(uint8_t bit_num,
-                               uint8_t reg,
-                               uint8_t hw_addr,
-                               int fd)
+                          uint8_t reg,
+                          uint8_t hw_addr,
+                          int fd)
 {
     return (mcp23s17_read_reg(reg, hw_addr, fd) >> bit_num) & 1;
 }
