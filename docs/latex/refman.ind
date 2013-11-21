@@ -1,0 +1,30 @@
+\begin{theindex}
+
+  \item {/home/tom/\discretionary {-}{}{}Work/pifacehome/libmcp23s17/src/mcp23s17.\discretionary {-}{}{}h}, 
+		\hyperpage{5}
+
+  \indexspace
+
+  \item {mcp23s17.\discretionary {-}{}{}h}
+    \subitem {mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}open}, 
+		\hyperpage{6}
+    \subitem {mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}read\discretionary {-}{}{}\_\discretionary {-}{}{}bit}, 
+		\hyperpage{6}
+    \subitem {mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}read\discretionary {-}{}{}\_\discretionary {-}{}{}reg}, 
+		\hyperpage{6}
+    \subitem {mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}write\discretionary {-}{}{}\_\discretionary {-}{}{}bit}, 
+		\hyperpage{7}
+    \subitem {mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}write\discretionary {-}{}{}\_\discretionary {-}{}{}reg}, 
+		\hyperpage{7}
+  \item {mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}open}
+    \subitem {mcp23s17.\discretionary {-}{}{}h}, \hyperpage{6}
+  \item {mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}read\discretionary {-}{}{}\_\discretionary {-}{}{}bit}
+    \subitem {mcp23s17.\discretionary {-}{}{}h}, \hyperpage{6}
+  \item {mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}read\discretionary {-}{}{}\_\discretionary {-}{}{}reg}
+    \subitem {mcp23s17.\discretionary {-}{}{}h}, \hyperpage{6}
+  \item {mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}write\discretionary {-}{}{}\_\discretionary {-}{}{}bit}
+    \subitem {mcp23s17.\discretionary {-}{}{}h}, \hyperpage{7}
+  \item {mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}write\discretionary {-}{}{}\_\discretionary {-}{}{}reg}
+    \subitem {mcp23s17.\discretionary {-}{}{}h}, \hyperpage{7}
+
+\end{theindex}

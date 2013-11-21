@@ -1,0 +1,27 @@
+A simple library for accessing the M\-C\-P23\-S17 port expander through S\-P\-I. See {\ttfamily example.\-c} for ideas on how to use.
+
+\section*{Use}
+
+Build the library\-: \begin{DoxyVerb}$ make
+\end{DoxyVerb}
+
+
+This creates the library {\ttfamily libmcp23s17.\-a}. Build the example (using Pi\-Face Digital)\-: \begin{DoxyVerb}$ make example
+\end{DoxyVerb}
+
+
+Include the library in your project with\-: \begin{DoxyVerb}$ gcc -o example example.c -Isrc/ -L. -lmcp23s17
+\end{DoxyVerb}
+
+
+{\ttfamily -\/\-Isrc/} is for including the header file.
+
+\section*{Todo}
+
+Feel free to contribute!
+
+
+\begin{DoxyItemize}
+\item Debian install
+\item Interrupts (using epoll?) 
+\end{DoxyItemize}

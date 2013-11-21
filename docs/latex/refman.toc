@@ -1,0 +1,15 @@
+\contentsline {chapter}{\numberline {1}libmcp23s17 -\/ A simple C library for the M\discretionary {-}{}{}C\discretionary {-}{}{}P23\discretionary {-}{}{}S17 port expander.}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Links}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Using the library}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Todo}{1}{section.1.3}
+\contentsline {chapter}{\numberline {2}File Index}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}File List}{3}{section.2.1}
+\contentsline {chapter}{\numberline {3}File Documentation}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}/home/tom/\discretionary {-}{}{}Work/pifacehome/libmcp23s17/src/mcp23s17.h File Reference}{5}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{6}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Function Documentation}{6}{subsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.2.1}mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}open}{6}{subsubsection.3.1.2.1}
+\contentsline {subsubsection}{\numberline {3.1.2.2}mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}read\discretionary {-}{}{}\_\discretionary {-}{}{}bit}{6}{subsubsection.3.1.2.2}
+\contentsline {subsubsection}{\numberline {3.1.2.3}mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}read\discretionary {-}{}{}\_\discretionary {-}{}{}reg}{7}{subsubsection.3.1.2.3}
+\contentsline {subsubsection}{\numberline {3.1.2.4}mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}write\discretionary {-}{}{}\_\discretionary {-}{}{}bit}{7}{subsubsection.3.1.2.4}
+\contentsline {subsubsection}{\numberline {3.1.2.5}mcp23s17\discretionary {-}{}{}\_\discretionary {-}{}{}write\discretionary {-}{}{}\_\discretionary {-}{}{}reg}{7}{subsubsection.3.1.2.5}
