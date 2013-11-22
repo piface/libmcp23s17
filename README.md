@@ -6,7 +6,7 @@ A simple library for accessing the MCP23S17 port expander through SPI. See
 Documentation
 -------------
 
-[http://piface.github.io/piface/libmcp23s17](http://piface.github.io/piface/libmcp23s17)
+[http://piface.github.io/libmcp23s17](http://piface.github.io/libmcp23s17)
 
 Build the docs with:
 
