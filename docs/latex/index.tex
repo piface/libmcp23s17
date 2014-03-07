@@ -1,0 +1,31 @@
+\href{mcp23s17_8h.html}{\tt mcp23s17.\-h}\hypertarget{index_links}{}\section{Links}\label{index_links}
+
+\begin{DoxyItemize}
+\item \href{http://www.piface.org.uk}{\tt piface.\-org.\-uk}
+\item \href{http://piface.github.io}{\tt piface product source code}
+\item \href{https://github.com/piface/libmcp23s17}{\tt Source code on Git\-Hub}
+\end{DoxyItemize}\hypertarget{index_use}{}\section{Using the library}\label{index_use}
+Download\-: \begin{DoxyVerb}$ git clone https://github.com/piface/libmcp23s17.git
+\end{DoxyVerb}
+
+
+Build the library\-: \begin{DoxyVerb}$ cd libmcp23s17/
+$ make
+\end{DoxyVerb}
+
+
+This creates the library {\ttfamily libmcp23s17.\-a}. Build the example (using Pi\-Face Digital)\-: \begin{DoxyVerb}$ make example
+\end{DoxyVerb}
+
+
+Include the library in your project with\-: \begin{DoxyVerb}$ gcc -o example example.c -Isrc/ -L. -lmcp23s17
+\end{DoxyVerb}
+
+
+{\ttfamily -\/\-I} directories to search for header files. {\ttfamily -\/\-L} directories to search for libraries. {\ttfamily -\/l} libraries to link.\hypertarget{index_todo}{}\section{Todo}\label{index_todo}
+Feel free to contribute!
+
+
+\begin{DoxyItemize}
+\item Debian install 
+\end{DoxyItemize}

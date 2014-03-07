@@ -1,0 +1,286 @@
+.TH "/home/tom/Work/pifacehome/libmcp23s17/src/mcp23s17.h" 3 "Fri Mar 7 2014" "Version 0.2.0" "libmcp23s17" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/tom/Work/pifacehome/libmcp23s17/src/mcp23s17.h \- 
+.PP
+A simple static library for controlling an MCP23S17 port expander over SPI\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdint\&.h>\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBWRITE_CMD\fP   0"
+.br
+.ti -1c
+.RI "#define \fBREAD_CMD\fP   1"
+.br
+.ti -1c
+.RI "#define \fBIODIRA\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBIODIRB\fP   0x01"
+.br
+.ti -1c
+.RI "#define \fBIPOLA\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBIPOLB\fP   0x03"
+.br
+.ti -1c
+.RI "#define \fBGPINTENA\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBGPINTENB\fP   0x05"
+.br
+.ti -1c
+.RI "#define \fBDEFVALA\fP   0x06"
+.br
+.ti -1c
+.RI "#define \fBDEFVALB\fP   0x07"
+.br
+.ti -1c
+.RI "#define \fBINTCONA\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBINTCONB\fP   0x09"
+.br
+.ti -1c
+.RI "#define \fBIOCON\fP   0x0A"
+.br
+.ti -1c
+.RI "#define \fBGPPUA\fP   0x0C"
+.br
+.ti -1c
+.RI "#define \fBGPPUB\fP   0x0D"
+.br
+.ti -1c
+.RI "#define \fBINTFA\fP   0x0E"
+.br
+.ti -1c
+.RI "#define \fBINTFB\fP   0x0F"
+.br
+.ti -1c
+.RI "#define \fBINTCAPA\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBINTCAPB\fP   0x11"
+.br
+.ti -1c
+.RI "#define \fBGPIOA\fP   0x12"
+.br
+.ti -1c
+.RI "#define \fBGPIOB\fP   0x13"
+.br
+.ti -1c
+.RI "#define \fBOLATA\fP   0x14"
+.br
+.ti -1c
+.RI "#define \fBOLATB\fP   0x15"
+.br
+.ti -1c
+.RI "#define \fBBANK_OFF\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBBANK_ON\fP   0x80"
+.br
+.ti -1c
+.RI "#define \fBINT_MIRROR_ON\fP   0x40"
+.br
+.ti -1c
+.RI "#define \fBINT_MIRROR_OFF\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBSEQOP_OFF\fP   0x20"
+.br
+.ti -1c
+.RI "#define \fBSEQOP_ON\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBDISSLW_ON\fP   0x10"
+.br
+.ti -1c
+.RI "#define \fBDISSLW_OFF\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBHAEN_ON\fP   0x08"
+.br
+.ti -1c
+.RI "#define \fBHAEN_OFF\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBODR_ON\fP   0x04"
+.br
+.ti -1c
+.RI "#define \fBODR_OFF\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBINTPOL_HIGH\fP   0x02"
+.br
+.ti -1c
+.RI "#define \fBINTPOL_LOW\fP   0x00"
+.br
+.ti -1c
+.RI "#define \fBGPIO_INTERRUPT_PIN\fP   25"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmcp23s17_open\fP (int bus, int chip_select)"
+.br
+.ti -1c
+.RI "uint8_t \fBmcp23s17_read_reg\fP (uint8_t reg, uint8_t hw_addr, int fd)"
+.br
+.ti -1c
+.RI "void \fBmcp23s17_write_reg\fP (uint8_t data, uint8_t reg, uint8_t hw_addr, int fd)"
+.br
+.ti -1c
+.RI "uint8_t \fBmcp23s17_read_bit\fP (uint8_t bit_num, uint8_t reg, uint8_t hw_addr, int fd)"
+.br
+.ti -1c
+.RI "void \fBmcp23s17_write_bit\fP (uint8_t data, uint8_t bit_num, uint8_t reg, uint8_t hw_addr, int fd)"
+.br
+.ti -1c
+.RI "int \fBmcp23s17_enable_interrupts\fP ()"
+.br
+.ti -1c
+.RI "int \fBmcp23s17_disable_interrupts\fP ()"
+.br
+.ti -1c
+.RI "int \fBmcp23s17_wait_for_interrupt\fP (int timeout)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A simple static library for controlling an MCP23S17 port expander over SPI\&. 
+
+Datasheet: http://ww1.microchip.com/downloads/en/devicedoc/21952b.pdf
+.PP
+Copyright (C) 2013 Thomas Preston thomas.preston@openlx.org.uk
+.PP
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version\&.
+.PP
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\&. See the GNU General Public License for more details\&.
+.PP
+You should have received a copy of the GNU General Public License along with this program\&. If not, see http://www.gnu.org/licenses/\&. 
+.SH "Function Documentation"
+.PP 
+.SS "int mcp23s17_disable_interrupts ()"
+Disables interrupts and exports to the GPIO connection from the mcp23s17\&.
+.PP
+\fBReturns:\fP
+.RS 4
+int 0 on success 
+.RE
+.PP
+
+.SS "int mcp23s17_enable_interrupts ()"
+Enables interrupts and exports to the GPIO connection from the mcp23s17\&.
+.PP
+\fBReturns:\fP
+.RS 4
+int 0 on success 
+.RE
+.PP
+
+.SS "int mcp23s17_open (intbus, intchip_select)"
+Returns a file descriptor for the SPI device through which the MCP23S17 port expander can be accessed\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbus\fP The SPI bus\&. 
+.br
+\fIchip_select\fP The SPI chip select\&. 
+.RE
+.PP
+
+.SS "uint8_t mcp23s17_read_bit (uint8_tbit_num, uint8_treg, uint8_thw_addr, intfd)"
+Reads a single bit from the register specified\&. Must also specify which hardware address and file descriptor to use\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbit_num\fP The bit number to read\&. 
+.br
+\fIreg\fP The register to read from (example: IODIRA, GPIOA)\&. 
+.br
+\fIhw_addr\fP The hardware address of the MCP23S17\&. 
+.br
+\fIfd\fP The file descriptor returned from <mcp23s17_open>'()'\&. 
+.RE
+.PP
+
+.SS "uint8_t mcp23s17_read_reg (uint8_treg, uint8_thw_addr, intfd)"
+Returns the 8 bit value from the register specified\&. Must also specify which hardware address and file descriptor to use\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreg\fP The register to read from (example: IODIRA, GPIOA)\&. 
+.br
+\fIhw_addr\fP The hardware address of the MCP23S17\&. 
+.br
+\fIfd\fP The file descriptor returned from <mcp23s17_open>'()'\&. 
+.RE
+.PP
+
+.SS "int mcp23s17_wait_for_interrupt (inttimeout)"
+Waits for an interrupt from the mcp23s17 or until timeout is reached\&. 
+.PP
+\fBNote:\fP
+.RS 4
+This method does NOT reset the interrupt - which is done automatically for you by reading the input state register\&. Calling this method twice in a row without reading the input register will cause it to always wait for your timeout value, regardless of button presses\&. To avoid this, read the input register after every call to this method\&.
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fItimeout\fP Maximum ms to wait for input, -1 for forever 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+the number of file descriptors ready for the requested I/O, zero if no file descriptor became ready during the requested timeout milliseconds, or -1 on error\&. 
+.RE
+.PP
+
+.SS "void mcp23s17_write_bit (uint8_tdata, uint8_tbit_num, uint8_treg, uint8_thw_addr, intfd)"
+Writes a single bit to the register specified\&. Must also specify which hardware address and file descriptor to use\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data to write\&. 
+.br
+\fIbit_num\fP The bit number to write to\&. 
+.br
+\fIreg\fP The register to write to (example: IODIRA, GPIOA)\&. 
+.br
+\fIhw_addr\fP The hardware address of the MCP23S17\&. 
+.br
+\fIfd\fP The file descriptor returned from <mcp23s17_open>'()'\&. 
+.RE
+.PP
+
+.SS "void mcp23s17_write_reg (uint8_tdata, uint8_treg, uint8_thw_addr, intfd)"
+Writes an 8 bit value to the register specified\&. Must also specify which hardware address and file descriptor to use\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data byte to be written\&. 
+.br
+\fIreg\fP The register to write to (example: IODIRA, GPIOA)\&. 
+.br
+\fIhw_addr\fP The hardware address of the MCP23S17\&. 
+.br
+\fIfd\fP The file descriptor returned from <mcp23s17_open>'()'\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libmcp23s17 from the source code\&.

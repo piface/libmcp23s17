@@ -1,0 +1,310 @@
+\hypertarget{mcp23s17_8h}{\section{/home/tom/\-Work/pifacehome/libmcp23s17/src/mcp23s17.h File Reference}
+\label{mcp23s17_8h}\index{/home/tom/\-Work/pifacehome/libmcp23s17/src/mcp23s17.\-h@{/home/tom/\-Work/pifacehome/libmcp23s17/src/mcp23s17.\-h}}
+}
+
+
+A simple static library for controlling an M\-C\-P23\-S17 port expander over S\-P\-I.  
+
+
+{\ttfamily \#include $<$stdint.\-h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{mcp23s17_8h_af792feb13ae0c1eab8f95f64c8baa96d}{\#define {\bfseries W\-R\-I\-T\-E\-\_\-\-C\-M\-D}~0}\label{mcp23s17_8h_af792feb13ae0c1eab8f95f64c8baa96d}
+
+\item 
+\hypertarget{mcp23s17_8h_a21623e2a5501c821da54dd76ffc1d077}{\#define {\bfseries R\-E\-A\-D\-\_\-\-C\-M\-D}~1}\label{mcp23s17_8h_a21623e2a5501c821da54dd76ffc1d077}
+
+\item 
+\hypertarget{mcp23s17_8h_adc41f0533868a04a9e6c3ed3f26488a6}{\#define {\bfseries I\-O\-D\-I\-R\-A}~0x00}\label{mcp23s17_8h_adc41f0533868a04a9e6c3ed3f26488a6}
+
+\item 
+\hypertarget{mcp23s17_8h_aaae6f5d4b938ce03d8f55ff955a50fa6}{\#define {\bfseries I\-O\-D\-I\-R\-B}~0x01}\label{mcp23s17_8h_aaae6f5d4b938ce03d8f55ff955a50fa6}
+
+\item 
+\hypertarget{mcp23s17_8h_ac9d11d94ef4e0f5af5a7c4a9282f5307}{\#define {\bfseries I\-P\-O\-L\-A}~0x02}\label{mcp23s17_8h_ac9d11d94ef4e0f5af5a7c4a9282f5307}
+
+\item 
+\hypertarget{mcp23s17_8h_ac0c5d9c1dc59cc9379639c54be896167}{\#define {\bfseries I\-P\-O\-L\-B}~0x03}\label{mcp23s17_8h_ac0c5d9c1dc59cc9379639c54be896167}
+
+\item 
+\hypertarget{mcp23s17_8h_acff943366de026f32e1673a4df1a0505}{\#define {\bfseries G\-P\-I\-N\-T\-E\-N\-A}~0x04}\label{mcp23s17_8h_acff943366de026f32e1673a4df1a0505}
+
+\item 
+\hypertarget{mcp23s17_8h_a5ffd5015532e8153286c411821367bff}{\#define {\bfseries G\-P\-I\-N\-T\-E\-N\-B}~0x05}\label{mcp23s17_8h_a5ffd5015532e8153286c411821367bff}
+
+\item 
+\hypertarget{mcp23s17_8h_ae76b52fd3627f6ed577f80908bf4c4e5}{\#define {\bfseries D\-E\-F\-V\-A\-L\-A}~0x06}\label{mcp23s17_8h_ae76b52fd3627f6ed577f80908bf4c4e5}
+
+\item 
+\hypertarget{mcp23s17_8h_a0a6e7794df94b37503c1ce1029c1abcc}{\#define {\bfseries D\-E\-F\-V\-A\-L\-B}~0x07}\label{mcp23s17_8h_a0a6e7794df94b37503c1ce1029c1abcc}
+
+\item 
+\hypertarget{mcp23s17_8h_ac32c353df163d7273df0eabe117e78ce}{\#define {\bfseries I\-N\-T\-C\-O\-N\-A}~0x08}\label{mcp23s17_8h_ac32c353df163d7273df0eabe117e78ce}
+
+\item 
+\hypertarget{mcp23s17_8h_a2cbcaf3673cb2cd3b623e082d41d5f59}{\#define {\bfseries I\-N\-T\-C\-O\-N\-B}~0x09}\label{mcp23s17_8h_a2cbcaf3673cb2cd3b623e082d41d5f59}
+
+\item 
+\hypertarget{mcp23s17_8h_a7cb7b41beb2b7038bbb1ff94c0b43905}{\#define {\bfseries I\-O\-C\-O\-N}~0x0\-A}\label{mcp23s17_8h_a7cb7b41beb2b7038bbb1ff94c0b43905}
+
+\item 
+\hypertarget{mcp23s17_8h_af605afb3f927168586a3b9bdc81e1d36}{\#define {\bfseries G\-P\-P\-U\-A}~0x0\-C}\label{mcp23s17_8h_af605afb3f927168586a3b9bdc81e1d36}
+
+\item 
+\hypertarget{mcp23s17_8h_aa46a055fe84af8cc9fdfefde63a0e464}{\#define {\bfseries G\-P\-P\-U\-B}~0x0\-D}\label{mcp23s17_8h_aa46a055fe84af8cc9fdfefde63a0e464}
+
+\item 
+\hypertarget{mcp23s17_8h_a061f282b0d8be33242cdf03c3f589a1c}{\#define {\bfseries I\-N\-T\-F\-A}~0x0\-E}\label{mcp23s17_8h_a061f282b0d8be33242cdf03c3f589a1c}
+
+\item 
+\hypertarget{mcp23s17_8h_a7f3f1a324023b50962f52470afd2d075}{\#define {\bfseries I\-N\-T\-F\-B}~0x0\-F}\label{mcp23s17_8h_a7f3f1a324023b50962f52470afd2d075}
+
+\item 
+\hypertarget{mcp23s17_8h_ae8ba4e9d56f29c39d8925590eb91821e}{\#define {\bfseries I\-N\-T\-C\-A\-P\-A}~0x10}\label{mcp23s17_8h_ae8ba4e9d56f29c39d8925590eb91821e}
+
+\item 
+\hypertarget{mcp23s17_8h_a30abb9adbe548028a05a2511fc0772b1}{\#define {\bfseries I\-N\-T\-C\-A\-P\-B}~0x11}\label{mcp23s17_8h_a30abb9adbe548028a05a2511fc0772b1}
+
+\item 
+\hypertarget{mcp23s17_8h_ac485358099728ddae050db37924dd6b7}{\#define {\bfseries G\-P\-I\-O\-A}~0x12}\label{mcp23s17_8h_ac485358099728ddae050db37924dd6b7}
+
+\item 
+\hypertarget{mcp23s17_8h_a68b66ac73be4c836db878a42e1fea3cd}{\#define {\bfseries G\-P\-I\-O\-B}~0x13}\label{mcp23s17_8h_a68b66ac73be4c836db878a42e1fea3cd}
+
+\item 
+\hypertarget{mcp23s17_8h_aaee40f6c37896fcf45e272edc82d2d73}{\#define {\bfseries O\-L\-A\-T\-A}~0x14}\label{mcp23s17_8h_aaee40f6c37896fcf45e272edc82d2d73}
+
+\item 
+\hypertarget{mcp23s17_8h_a35a674f8d161646c0501bc4fbb1afac2}{\#define {\bfseries O\-L\-A\-T\-B}~0x15}\label{mcp23s17_8h_a35a674f8d161646c0501bc4fbb1afac2}
+
+\item 
+\hypertarget{mcp23s17_8h_a7379666e7aa9e6fe1e387d983a10389d}{\#define {\bfseries B\-A\-N\-K\-\_\-\-O\-F\-F}~0x00}\label{mcp23s17_8h_a7379666e7aa9e6fe1e387d983a10389d}
+
+\item 
+\hypertarget{mcp23s17_8h_a3efb10ae5f5b3d6aff617c833ca6d77d}{\#define {\bfseries B\-A\-N\-K\-\_\-\-O\-N}~0x80}\label{mcp23s17_8h_a3efb10ae5f5b3d6aff617c833ca6d77d}
+
+\item 
+\hypertarget{mcp23s17_8h_a69244483301677edcfd4dc4ff2c6e0ae}{\#define {\bfseries I\-N\-T\-\_\-\-M\-I\-R\-R\-O\-R\-\_\-\-O\-N}~0x40}\label{mcp23s17_8h_a69244483301677edcfd4dc4ff2c6e0ae}
+
+\item 
+\hypertarget{mcp23s17_8h_a399c9f929d9c851ca7ec7c8716c302f6}{\#define {\bfseries I\-N\-T\-\_\-\-M\-I\-R\-R\-O\-R\-\_\-\-O\-F\-F}~0x00}\label{mcp23s17_8h_a399c9f929d9c851ca7ec7c8716c302f6}
+
+\item 
+\hypertarget{mcp23s17_8h_a943d8b490a9c2a3b803e66e9c735a93e}{\#define {\bfseries S\-E\-Q\-O\-P\-\_\-\-O\-F\-F}~0x20}\label{mcp23s17_8h_a943d8b490a9c2a3b803e66e9c735a93e}
+
+\item 
+\hypertarget{mcp23s17_8h_a3ed9fce45fcde6b4683bff685f5178bd}{\#define {\bfseries S\-E\-Q\-O\-P\-\_\-\-O\-N}~0x00}\label{mcp23s17_8h_a3ed9fce45fcde6b4683bff685f5178bd}
+
+\item 
+\hypertarget{mcp23s17_8h_ae00c10dfedc4dbce567aa26c0e7cfd90}{\#define {\bfseries D\-I\-S\-S\-L\-W\-\_\-\-O\-N}~0x10}\label{mcp23s17_8h_ae00c10dfedc4dbce567aa26c0e7cfd90}
+
+\item 
+\hypertarget{mcp23s17_8h_af1ded270366dcb728a57e0c617e1757d}{\#define {\bfseries D\-I\-S\-S\-L\-W\-\_\-\-O\-F\-F}~0x00}\label{mcp23s17_8h_af1ded270366dcb728a57e0c617e1757d}
+
+\item 
+\hypertarget{mcp23s17_8h_a1b85b9b002a132d6672973d680d30dd7}{\#define {\bfseries H\-A\-E\-N\-\_\-\-O\-N}~0x08}\label{mcp23s17_8h_a1b85b9b002a132d6672973d680d30dd7}
+
+\item 
+\hypertarget{mcp23s17_8h_a5019937f1c5257ca492e7e97dea9f914}{\#define {\bfseries H\-A\-E\-N\-\_\-\-O\-F\-F}~0x00}\label{mcp23s17_8h_a5019937f1c5257ca492e7e97dea9f914}
+
+\item 
+\hypertarget{mcp23s17_8h_a623a72faf42eb79c17bd2f0ef99f9bbd}{\#define {\bfseries O\-D\-R\-\_\-\-O\-N}~0x04}\label{mcp23s17_8h_a623a72faf42eb79c17bd2f0ef99f9bbd}
+
+\item 
+\hypertarget{mcp23s17_8h_a408e2be1452cc314278f012611c8486b}{\#define {\bfseries O\-D\-R\-\_\-\-O\-F\-F}~0x00}\label{mcp23s17_8h_a408e2be1452cc314278f012611c8486b}
+
+\item 
+\hypertarget{mcp23s17_8h_a959620ccba90db807a8865fe7b487a70}{\#define {\bfseries I\-N\-T\-P\-O\-L\-\_\-\-H\-I\-G\-H}~0x02}\label{mcp23s17_8h_a959620ccba90db807a8865fe7b487a70}
+
+\item 
+\hypertarget{mcp23s17_8h_ae462a3d5844e7073cb49669005e345b1}{\#define {\bfseries I\-N\-T\-P\-O\-L\-\_\-\-L\-O\-W}~0x00}\label{mcp23s17_8h_ae462a3d5844e7073cb49669005e345b1}
+
+\item 
+\hypertarget{mcp23s17_8h_a205879a9412382c0ea911703a8622345}{\#define {\bfseries G\-P\-I\-O\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-P\-I\-N}~25}\label{mcp23s17_8h_a205879a9412382c0ea911703a8622345}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{mcp23s17_8h_acb543fc291843b8d2c8316e20b01400a}{mcp23s17\-\_\-open} (int bus, int chip\-\_\-select)
+\item 
+uint8\-\_\-t \hyperlink{mcp23s17_8h_a57b4cceeb9053f3f579a9acb0ed7cc7e}{mcp23s17\-\_\-read\-\_\-reg} (uint8\-\_\-t reg, uint8\-\_\-t hw\-\_\-addr, int fd)
+\item 
+void \hyperlink{mcp23s17_8h_aa3586d18201da61607afed24f3b8a9d7}{mcp23s17\-\_\-write\-\_\-reg} (uint8\-\_\-t data, uint8\-\_\-t reg, uint8\-\_\-t hw\-\_\-addr, int fd)
+\item 
+uint8\-\_\-t \hyperlink{mcp23s17_8h_a93b365f10c1ca633945dfcece0e8c1fa}{mcp23s17\-\_\-read\-\_\-bit} (uint8\-\_\-t bit\-\_\-num, uint8\-\_\-t reg, uint8\-\_\-t hw\-\_\-addr, int fd)
+\item 
+void \hyperlink{mcp23s17_8h_a68d9c3c6577673cb30ff5c0baa85f4dc}{mcp23s17\-\_\-write\-\_\-bit} (uint8\-\_\-t data, uint8\-\_\-t bit\-\_\-num, uint8\-\_\-t reg, uint8\-\_\-t hw\-\_\-addr, int fd)
+\item 
+int \hyperlink{mcp23s17_8h_aac4ee3153a806f58ebf49b3fa83a4ea8}{mcp23s17\-\_\-enable\-\_\-interrupts} ()
+\item 
+int \hyperlink{mcp23s17_8h_ab4c8197ef196c6490270684b85883f33}{mcp23s17\-\_\-disable\-\_\-interrupts} ()
+\item 
+int \hyperlink{mcp23s17_8h_aafb367db1292b7fdd6002b7246d3613e}{mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt} (int timeout)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A simple static library for controlling an M\-C\-P23\-S17 port expander over S\-P\-I. Datasheet\-: \href{http://ww1.microchip.com/downloads/en/devicedoc/21952b.pdf}{\tt http\-://ww1.\-microchip.\-com/downloads/en/devicedoc/21952b.\-pdf}
+
+Copyright (C) 2013 Thomas Preston \href{mailto:thomas.preston@openlx.org.uk}{\tt thomas.\-preston@openlx.\-org.\-uk}
+
+This program is free software\-: you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details.
+
+You should have received a copy of the G\-N\-U General Public License along with this program. If not, see \href{http://www.gnu.org/licenses/}{\tt http\-://www.\-gnu.\-org/licenses/}. 
+
+\subsection{Function Documentation}
+\hypertarget{mcp23s17_8h_ab4c8197ef196c6490270684b85883f33}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-disable\-\_\-interrupts@{mcp23s17\-\_\-disable\-\_\-interrupts}}
+\index{mcp23s17\-\_\-disable\-\_\-interrupts@{mcp23s17\-\_\-disable\-\_\-interrupts}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-disable\-\_\-interrupts}]{\setlength{\rightskip}{0pt plus 5cm}int mcp23s17\-\_\-disable\-\_\-interrupts (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_ab4c8197ef196c6490270684b85883f33}
+Disables interrupts and exports to the G\-P\-I\-O connection from the mcp23s17.
+
+\begin{DoxyReturn}{Returns}
+int 0 on success 
+\end{DoxyReturn}
+\hypertarget{mcp23s17_8h_aac4ee3153a806f58ebf49b3fa83a4ea8}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-enable\-\_\-interrupts@{mcp23s17\-\_\-enable\-\_\-interrupts}}
+\index{mcp23s17\-\_\-enable\-\_\-interrupts@{mcp23s17\-\_\-enable\-\_\-interrupts}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-enable\-\_\-interrupts}]{\setlength{\rightskip}{0pt plus 5cm}int mcp23s17\-\_\-enable\-\_\-interrupts (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_aac4ee3153a806f58ebf49b3fa83a4ea8}
+Enables interrupts and exports to the G\-P\-I\-O connection from the mcp23s17.
+
+\begin{DoxyReturn}{Returns}
+int 0 on success 
+\end{DoxyReturn}
+\hypertarget{mcp23s17_8h_acb543fc291843b8d2c8316e20b01400a}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-open@{mcp23s17\-\_\-open}}
+\index{mcp23s17\-\_\-open@{mcp23s17\-\_\-open}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}int mcp23s17\-\_\-open (
+\begin{DoxyParamCaption}
+\item[{int}]{bus, }
+\item[{int}]{chip\-\_\-select}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_acb543fc291843b8d2c8316e20b01400a}
+Returns a file descriptor for the S\-P\-I device through which the M\-C\-P23\-S17 port expander can be accessed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bus} & The S\-P\-I bus. \\
+\hline
+{\em chip\-\_\-select} & The S\-P\-I chip select. \\
+\hline
+\end{DoxyParams}
+\hypertarget{mcp23s17_8h_a93b365f10c1ca633945dfcece0e8c1fa}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-read\-\_\-bit@{mcp23s17\-\_\-read\-\_\-bit}}
+\index{mcp23s17\-\_\-read\-\_\-bit@{mcp23s17\-\_\-read\-\_\-bit}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-read\-\_\-bit}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t mcp23s17\-\_\-read\-\_\-bit (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{bit\-\_\-num, }
+\item[{uint8\-\_\-t}]{reg, }
+\item[{uint8\-\_\-t}]{hw\-\_\-addr, }
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_a93b365f10c1ca633945dfcece0e8c1fa}
+Reads a single bit from the register specified. Must also specify which hardware address and file descriptor to use.
+
+
+\begin{DoxyParams}{Parameters}
+{\em bit\-\_\-num} & The bit number to read. \\
+\hline
+{\em reg} & The register to read from (example\-: I\-O\-D\-I\-R\-A, G\-P\-I\-O\-A). \\
+\hline
+{\em hw\-\_\-addr} & The hardware address of the M\-C\-P23\-S17. \\
+\hline
+{\em fd} & The file descriptor returned from $<$mcp23s17\-\_\-open$>$\char`\"{}()\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\hypertarget{mcp23s17_8h_a57b4cceeb9053f3f579a9acb0ed7cc7e}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-read\-\_\-reg@{mcp23s17\-\_\-read\-\_\-reg}}
+\index{mcp23s17\-\_\-read\-\_\-reg@{mcp23s17\-\_\-read\-\_\-reg}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-read\-\_\-reg}]{\setlength{\rightskip}{0pt plus 5cm}uint8\-\_\-t mcp23s17\-\_\-read\-\_\-reg (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{reg, }
+\item[{uint8\-\_\-t}]{hw\-\_\-addr, }
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_a57b4cceeb9053f3f579a9acb0ed7cc7e}
+Returns the 8 bit value from the register specified. Must also specify which hardware address and file descriptor to use.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & The register to read from (example\-: I\-O\-D\-I\-R\-A, G\-P\-I\-O\-A). \\
+\hline
+{\em hw\-\_\-addr} & The hardware address of the M\-C\-P23\-S17. \\
+\hline
+{\em fd} & The file descriptor returned from $<$mcp23s17\-\_\-open$>$\char`\"{}()\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\hypertarget{mcp23s17_8h_aafb367db1292b7fdd6002b7246d3613e}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt@{mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt}}
+\index{mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt@{mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt}]{\setlength{\rightskip}{0pt plus 5cm}int mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt (
+\begin{DoxyParamCaption}
+\item[{int}]{timeout}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_aafb367db1292b7fdd6002b7246d3613e}
+Waits for an interrupt from the mcp23s17 or until timeout is reached. \begin{DoxyNote}{Note}
+This method does N\-O\-T reset the interrupt -\/ which is done automatically for you by reading the input state register. Calling this method twice in a row without reading the input register will cause it to always wait for your timeout value, regardless of button presses. To avoid this, read the input register after every call to this method.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & Maximum ms to wait for input, -\/1 for forever \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of file descriptors ready for the requested I/\-O, zero if no file descriptor became ready during the requested timeout milliseconds, or -\/1 on error. 
+\end{DoxyReturn}
+\hypertarget{mcp23s17_8h_a68d9c3c6577673cb30ff5c0baa85f4dc}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-write\-\_\-bit@{mcp23s17\-\_\-write\-\_\-bit}}
+\index{mcp23s17\-\_\-write\-\_\-bit@{mcp23s17\-\_\-write\-\_\-bit}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-write\-\_\-bit}]{\setlength{\rightskip}{0pt plus 5cm}void mcp23s17\-\_\-write\-\_\-bit (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{data, }
+\item[{uint8\-\_\-t}]{bit\-\_\-num, }
+\item[{uint8\-\_\-t}]{reg, }
+\item[{uint8\-\_\-t}]{hw\-\_\-addr, }
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_a68d9c3c6577673cb30ff5c0baa85f4dc}
+Writes a single bit to the register specified. Must also specify which hardware address and file descriptor to use.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data to write. \\
+\hline
+{\em bit\-\_\-num} & The bit number to write to. \\
+\hline
+{\em reg} & The register to write to (example\-: I\-O\-D\-I\-R\-A, G\-P\-I\-O\-A). \\
+\hline
+{\em hw\-\_\-addr} & The hardware address of the M\-C\-P23\-S17. \\
+\hline
+{\em fd} & The file descriptor returned from $<$mcp23s17\-\_\-open$>$\char`\"{}()\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\hypertarget{mcp23s17_8h_aa3586d18201da61607afed24f3b8a9d7}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-write\-\_\-reg@{mcp23s17\-\_\-write\-\_\-reg}}
+\index{mcp23s17\-\_\-write\-\_\-reg@{mcp23s17\-\_\-write\-\_\-reg}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-write\-\_\-reg}]{\setlength{\rightskip}{0pt plus 5cm}void mcp23s17\-\_\-write\-\_\-reg (
+\begin{DoxyParamCaption}
+\item[{uint8\-\_\-t}]{data, }
+\item[{uint8\-\_\-t}]{reg, }
+\item[{uint8\-\_\-t}]{hw\-\_\-addr, }
+\item[{int}]{fd}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_aa3586d18201da61607afed24f3b8a9d7}
+Writes an 8 bit value to the register specified. Must also specify which hardware address and file descriptor to use.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The data byte to be written. \\
+\hline
+{\em reg} & The register to write to (example\-: I\-O\-D\-I\-R\-A, G\-P\-I\-O\-A). \\
+\hline
+{\em hw\-\_\-addr} & The hardware address of the M\-C\-P23\-S17. \\
+\hline
+{\em fd} & The file descriptor returned from $<$mcp23s17\-\_\-open$>$\char`\"{}()\char`\"{}. \\
+\hline
+\end{DoxyParams}
