@@ -22,7 +22,9 @@
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">libmcp23s17
+   &#160;<span id="projectnumber">0.2.0</span>
    </div>
+   <div id="projectbrief">A simple static C library for the MCP23S17 port expander.</div>
   </td>
  </tr>
  </tbody>
@@ -58,7 +60,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -66,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -171,6 +173,8 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>INTPOL_HIGH</b>&#160;&#160;&#160;0x02</td></tr>
 <tr class="memitem:ae462a3d5844e7073cb49669005e345b1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae462a3d5844e7073cb49669005e345b1"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>INTPOL_LOW</b>&#160;&#160;&#160;0x00</td></tr>
+<tr class="memitem:a205879a9412382c0ea911703a8622345"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a205879a9412382c0ea911703a8622345"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>GPIO_INTERRUPT_PIN</b>&#160;&#160;&#160;25</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -179,6 +183,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aa3586d18201da61607afed24f3b8a9d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcp23s17_8h.html#aa3586d18201da61607afed24f3b8a9d7">mcp23s17_write_reg</a> (uint8_t data, uint8_t reg, uint8_t hw_addr, int fd)</td></tr>
 <tr class="memitem:a93b365f10c1ca633945dfcece0e8c1fa"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcp23s17_8h.html#a93b365f10c1ca633945dfcece0e8c1fa">mcp23s17_read_bit</a> (uint8_t bit_num, uint8_t reg, uint8_t hw_addr, int fd)</td></tr>
 <tr class="memitem:a68d9c3c6577673cb30ff5c0baa85f4dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcp23s17_8h.html#a68d9c3c6577673cb30ff5c0baa85f4dc">mcp23s17_write_bit</a> (uint8_t data, uint8_t bit_num, uint8_t reg, uint8_t hw_addr, int fd)</td></tr>
+<tr class="memitem:aac4ee3153a806f58ebf49b3fa83a4ea8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcp23s17_8h.html#aac4ee3153a806f58ebf49b3fa83a4ea8">mcp23s17_enable_interrupts</a> ()</td></tr>
+<tr class="memitem:ab4c8197ef196c6490270684b85883f33"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcp23s17_8h.html#ab4c8197ef196c6490270684b85883f33">mcp23s17_disable_interrupts</a> ()</td></tr>
+<tr class="memitem:aafb367db1292b7fdd6002b7246d3613e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mcp23s17_8h.html#aafb367db1292b7fdd6002b7246d3613e">mcp23s17_wait_for_interrupt</a> (int timeout)</td></tr>
 </table>
 <a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A simple static library for controlling an MCP23S17 port expander over SPI. </p>
@@ -188,6 +195,40 @@ Functions</h2></td></tr>
 <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
 <p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
 </div><h2>Function Documentation</h2>
+<a class="anchor" id="ab4c8197ef196c6490270684b85883f33"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mcp23s17_disable_interrupts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Disables interrupts and exports to the GPIO connection from the mcp23s17.</p>
+<dl class="section return"><dt>Returns</dt><dd>int 0 on success </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aac4ee3153a806f58ebf49b3fa83a4ea8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mcp23s17_enable_interrupts </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Enables interrupts and exports to the GPIO connection from the mcp23s17.</p>
+<dl class="section return"><dt>Returns</dt><dd>int 0 on success </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="acb543fc291843b8d2c8316e20b01400a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -311,6 +352,31 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aafb367db1292b7fdd6002b7246d3613e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int mcp23s17_wait_for_interrupt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Waits for an interrupt from the mcp23s17 or until timeout is reached. </p>
+<dl class="section note"><dt>Note</dt><dd>This method does NOT reset the interrupt - which is done automatically for you by reading the input state register. Calling this method twice in a row without reading the input register will cause it to always wait for your timeout value, regardless of button presses. To avoid this, read the input register after every call to this method.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timeout</td><td>Maximum ms to wait for input, -1 for forever </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the number of file descriptors ready for the requested I/O, zero if no file descriptor became ready during the requested timeout milliseconds, or -1 on error. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a68d9c3c6577673cb30ff5c0baa85f4dc"></a>
 <div class="memitem">
 <div class="memproto">
@@ -417,7 +483,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Nov 21 2013 16:02:33 for libmcp23s17 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 7 2014 10:43:24 for libmcp23s17 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

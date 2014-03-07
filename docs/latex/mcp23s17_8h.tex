@@ -120,6 +120,9 @@ A simple static library for controlling an M\-C\-P23\-S17 port expander over S\-
 \item 
 \hypertarget{mcp23s17_8h_ae462a3d5844e7073cb49669005e345b1}{\#define {\bfseries I\-N\-T\-P\-O\-L\-\_\-\-L\-O\-W}~0x00}\label{mcp23s17_8h_ae462a3d5844e7073cb49669005e345b1}
 
+\item 
+\hypertarget{mcp23s17_8h_a205879a9412382c0ea911703a8622345}{\#define {\bfseries G\-P\-I\-O\-\_\-\-I\-N\-T\-E\-R\-R\-U\-P\-T\-\_\-\-P\-I\-N}~25}\label{mcp23s17_8h_a205879a9412382c0ea911703a8622345}
+
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -133,6 +136,12 @@ void \hyperlink{mcp23s17_8h_aa3586d18201da61607afed24f3b8a9d7}{mcp23s17\-\_\-wri
 uint8\-\_\-t \hyperlink{mcp23s17_8h_a93b365f10c1ca633945dfcece0e8c1fa}{mcp23s17\-\_\-read\-\_\-bit} (uint8\-\_\-t bit\-\_\-num, uint8\-\_\-t reg, uint8\-\_\-t hw\-\_\-addr, int fd)
 \item 
 void \hyperlink{mcp23s17_8h_a68d9c3c6577673cb30ff5c0baa85f4dc}{mcp23s17\-\_\-write\-\_\-bit} (uint8\-\_\-t data, uint8\-\_\-t bit\-\_\-num, uint8\-\_\-t reg, uint8\-\_\-t hw\-\_\-addr, int fd)
+\item 
+int \hyperlink{mcp23s17_8h_aac4ee3153a806f58ebf49b3fa83a4ea8}{mcp23s17\-\_\-enable\-\_\-interrupts} ()
+\item 
+int \hyperlink{mcp23s17_8h_ab4c8197ef196c6490270684b85883f33}{mcp23s17\-\_\-disable\-\_\-interrupts} ()
+\item 
+int \hyperlink{mcp23s17_8h_aafb367db1292b7fdd6002b7246d3613e}{mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt} (int timeout)
 \end{DoxyCompactItemize}
 
 
@@ -148,6 +157,30 @@ This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-
 You should have received a copy of the G\-N\-U General Public License along with this program. If not, see \href{http://www.gnu.org/licenses/}{\tt http\-://www.\-gnu.\-org/licenses/}. 
 
 \subsection{Function Documentation}
+\hypertarget{mcp23s17_8h_ab4c8197ef196c6490270684b85883f33}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-disable\-\_\-interrupts@{mcp23s17\-\_\-disable\-\_\-interrupts}}
+\index{mcp23s17\-\_\-disable\-\_\-interrupts@{mcp23s17\-\_\-disable\-\_\-interrupts}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-disable\-\_\-interrupts}]{\setlength{\rightskip}{0pt plus 5cm}int mcp23s17\-\_\-disable\-\_\-interrupts (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_ab4c8197ef196c6490270684b85883f33}
+Disables interrupts and exports to the G\-P\-I\-O connection from the mcp23s17.
+
+\begin{DoxyReturn}{Returns}
+int 0 on success 
+\end{DoxyReturn}
+\hypertarget{mcp23s17_8h_aac4ee3153a806f58ebf49b3fa83a4ea8}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-enable\-\_\-interrupts@{mcp23s17\-\_\-enable\-\_\-interrupts}}
+\index{mcp23s17\-\_\-enable\-\_\-interrupts@{mcp23s17\-\_\-enable\-\_\-interrupts}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-enable\-\_\-interrupts}]{\setlength{\rightskip}{0pt plus 5cm}int mcp23s17\-\_\-enable\-\_\-interrupts (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_aac4ee3153a806f58ebf49b3fa83a4ea8}
+Enables interrupts and exports to the G\-P\-I\-O connection from the mcp23s17.
+
+\begin{DoxyReturn}{Returns}
+int 0 on success 
+\end{DoxyReturn}
 \hypertarget{mcp23s17_8h_acb543fc291843b8d2c8316e20b01400a}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-open@{mcp23s17\-\_\-open}}
 \index{mcp23s17\-\_\-open@{mcp23s17\-\_\-open}!mcp23s17.h@{mcp23s17.\-h}}
 \subsubsection[{mcp23s17\-\_\-open}]{\setlength{\rightskip}{0pt plus 5cm}int mcp23s17\-\_\-open (
@@ -208,6 +241,24 @@ Returns the 8 bit value from the register specified. Must also specify which har
 {\em fd} & The file descriptor returned from $<$mcp23s17\-\_\-open$>$\char`\"{}()\char`\"{}. \\
 \hline
 \end{DoxyParams}
+\hypertarget{mcp23s17_8h_aafb367db1292b7fdd6002b7246d3613e}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt@{mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt}}
+\index{mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt@{mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt}!mcp23s17.h@{mcp23s17.\-h}}
+\subsubsection[{mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt}]{\setlength{\rightskip}{0pt plus 5cm}int mcp23s17\-\_\-wait\-\_\-for\-\_\-interrupt (
+\begin{DoxyParamCaption}
+\item[{int}]{timeout}
+\end{DoxyParamCaption}
+)}}\label{mcp23s17_8h_aafb367db1292b7fdd6002b7246d3613e}
+Waits for an interrupt from the mcp23s17 or until timeout is reached. \begin{DoxyNote}{Note}
+This method does N\-O\-T reset the interrupt -\/ which is done automatically for you by reading the input state register. Calling this method twice in a row without reading the input register will cause it to always wait for your timeout value, regardless of button presses. To avoid this, read the input register after every call to this method.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & Maximum ms to wait for input, -\/1 for forever \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the number of file descriptors ready for the requested I/\-O, zero if no file descriptor became ready during the requested timeout milliseconds, or -\/1 on error. 
+\end{DoxyReturn}
 \hypertarget{mcp23s17_8h_a68d9c3c6577673cb30ff5c0baa85f4dc}{\index{mcp23s17.\-h@{mcp23s17.\-h}!mcp23s17\-\_\-write\-\_\-bit@{mcp23s17\-\_\-write\-\_\-bit}}
 \index{mcp23s17\-\_\-write\-\_\-bit@{mcp23s17\-\_\-write\-\_\-bit}!mcp23s17.h@{mcp23s17.\-h}}
 \subsubsection[{mcp23s17\-\_\-write\-\_\-bit}]{\setlength{\rightskip}{0pt plus 5cm}void mcp23s17\-\_\-write\-\_\-bit (
