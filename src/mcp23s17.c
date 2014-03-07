@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdint.h>
+#include <unistd.h>
 #include <fcntl.h>
+#include <sys/epoll.h>
+#include <sys/types.h>
 #include <sys/ioctl.h>
 #include <linux/spi/spidev.h>
 #include "mcp23s17.h"
@@ -26,23 +29,23 @@ int mcp23s17_open(int bus, int chip_select)
     // open
     if ((fd = open(spidev[bus][chip_select], O_RDWR)) < 0) {
         fprintf(stderr,
-                "mcp23s17_open: ERROR Could not open SPI device (%s).",
+                "mcp23s17_open: ERROR Could not open SPI device (%s).\n",
                 spidev[bus][chip_select]);
         return -1;
     }
 
     // initialise
     if (ioctl(fd, SPI_IOC_WR_MODE, &spi_mode) < 0) {
-        fprintf(stderr, "mcp23s17_open: ERROR Could not set SPI mode.");
+        fprintf(stderr, "mcp23s17_open: ERROR Could not set SPI mode.\n");
         return -1;
     }
     if (ioctl(fd, SPI_IOC_WR_BITS_PER_WORD, &spi_bpw) < 0) {
         fprintf(stderr,
-                "mcp23s17_open: ERROR Could not set SPI bits per word.");
+                "mcp23s17_open: ERROR Could not set SPI bits per word.\n");
         return -1;
     }
     if (ioctl(fd, SPI_IOC_WR_MAX_SPEED_HZ, &spi_speed) < 0) {
-        fprintf(stderr, "mcp23s17_open: ERROR Could not set SPI speed.");
+        fprintf(stderr, "mcp23s17_open: ERROR Could not set SPI speed.\n");
         return -1;
     }
 
@@ -67,7 +70,7 @@ uint8_t mcp23s17_read_reg(uint8_t reg, uint8_t hw_addr, int fd)
     if ((ioctl(fd, SPI_IOC_MESSAGE(1), &spi) < 0)) {
         fprintf(stderr,
                 "mcp23s17_read_reg: There was a error during the SPI "
-                "transaction.");
+                "transaction.\n");
         return -1;
     }
 
@@ -93,7 +96,7 @@ void mcp23s17_write_reg(uint8_t data, uint8_t reg, uint8_t hw_addr, int fd)
     if ((ioctl(fd, SPI_IOC_MESSAGE(1), &spi) < 0)) {
         fprintf(stderr,
                 "mcp23s17_write_reg: There was a error during the SPI "
-                "transaction.");
+                "transaction.\n");
     }
 }
 
@@ -121,6 +124,86 @@ void mcp23s17_write_bit(uint8_t data,
 }
 
 
+
+
+int mcp23s17_enable_interrupts()
+{
+    int fd, len;
+    char str_gpio[3];
+    char str_filenm[33];
+
+    if ((fd = open("/sys/class/gpio/export", O_WRONLY)) < 0) 
+        return -1;
+
+    len = snprintf(str_gpio, sizeof(str_gpio), "%d", GPIO_INTERRUPT_PIN);
+    write(fd, str_gpio, len);
+    close(fd);
+
+    snprintf(str_filenm, sizeof(str_filenm), "/sys/class/gpio/gpio%d/direction", GPIO_INTERRUPT_PIN);
+    if ((fd = open(str_filenm, O_WRONLY)) < 0)
+        return -1;
+
+    write(fd, "in", 3);
+    close(fd);
+
+    snprintf(str_filenm, sizeof(str_filenm), "/sys/class/gpio/gpio%d/edge", GPIO_INTERRUPT_PIN);
+    if ((fd = open(str_filenm, O_WRONLY)) < 0)
+        return -1;
+
+    write(fd, "falling", 8);
+    close(fd);
+
+    return 0;
+}
+
+int mcp23s17_disable_interrupts()
+{
+    int fd, len;
+    char str_gpio[3];
+
+    if ((fd = open("/sys/class/gpio/unexport", O_WRONLY)) < 0)
+        return -1;
+
+    len = snprintf(str_gpio, sizeof(str_gpio), "%d", GPIO_INTERRUPT_PIN);
+    write(fd, str_gpio, len);
+    close(fd);
+
+    return 0;
+}
+
+int mcp23s17_wait_for_interrupt(int timeout)
+{
+    int n = -1;
+    char str_filenm[33];
+
+    snprintf(str_filenm, sizeof(str_filenm), "/sys/class/gpio/gpio%d/value", GPIO_INTERRUPT_PIN);
+    int epfd = epoll_create(1);
+    int fd = open(str_filenm, O_RDONLY | O_NONBLOCK);
+
+    if(fd > 0) {
+        struct epoll_event ev;
+        struct epoll_event events;
+        ev.events = EPOLLIN | EPOLLET;
+        ev.data.fd = fd;
+
+        epoll_ctl(epfd, EPOLL_CTL_ADD, fd, &ev);
+
+        // Ignore GPIO Initial Event
+        epoll_wait(epfd, &events, 1, 10);
+
+        // Wait for user event
+        n = epoll_wait(epfd, &events, 1, timeout); 
+
+        close(fd);
+    }
+
+    return n;
+}
+
+
+
+
+
 /**
  * Returns an SPI control byte.
  *
@@ -144,3 +227,4 @@ static uint8_t get_spi_control_byte(uint8_t rw_cmd, uint8_t hw_addr)
     rw_cmd &= 1; // just 1 bit long
     return 0x40 | hw_addr | rw_cmd;
 }
+
