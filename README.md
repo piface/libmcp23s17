@@ -12,7 +12,7 @@ Build the docs with:
 
     $ git clone https://github.com/piface/libmcp23s17.git
     $ cd libmcp23s17/docs/
-    $ doxygen mcp23s17-doc.conf
+    $ doxygen libmcp23s17-doc.conf
 
 To view as HTML, point your browser to `libmcp23s17/docs/html/index.html`.
 
