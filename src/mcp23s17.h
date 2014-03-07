@@ -72,6 +72,8 @@ extern "C" {
 #define INTPOL_HIGH 0x02  // interupt polarity
 #define INTPOL_LOW 0x00
 
+#define GPIO_INTERRUPT_PIN 25
+
 /**
  * Returns a file descriptor for the SPI device through which the
  * MCP23S17 port expander can be accessed.
@@ -131,6 +133,45 @@ void mcp23s17_write_bit(uint8_t data,
                         uint8_t reg,
                         uint8_t hw_addr,
                         int fd);
+
+
+/**
+ * Enables interrupts and exports to the GPIO connection from 
+ * the mcp23s17. 
+ *  
+ * @return int 0 on success
+ */
+int mcp23s17_enable_interrupts();
+
+
+/**
+ * Disables interrupts and exports to the GPIO connection from 
+ * the mcp23s17. 
+ *  
+ * @return int 0 on success
+ */
+int mcp23s17_disable_interrupts();
+
+
+/**
+ * Waits for an interrupt from the mcp23s17 or until timeout is 
+ * reached.  
+ * @note This method does NOT reset the interrupt - which is 
+ *       done automatically for you by reading the input state
+ *       register.  Calling this method twice in a row without
+ *       reading the input register will cause it to always wait
+ *       for your timeout value, regardless of button presses.
+ *       To avoid this, read the input register after every call
+ *       to this method.
+ *  
+ * @param timeout Maximum ms to wait for input, -1 for forever 
+ * @return the number of file descriptors ready for the 
+ *         requested I/O, zero if no file descriptor became
+ *         ready during the requested timeout milliseconds, or
+ *         -1 on error.
+ */
+int mcp23s17_wait_for_interrupt(int timeout);
+
 
 #ifdef __cplusplus
 }
