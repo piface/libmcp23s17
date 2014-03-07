@@ -37,6 +37,5 @@ Include the library in your project with:
 Feel free to contribute!
 
 - Debian install
-- Interrupts (using epoll?)
 
 */
