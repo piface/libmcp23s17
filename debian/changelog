@@ -1,0 +1,5 @@
+libmcp23s17 (0.3.0) UNRELEASED; urgency=low
+
+  * Initial release.
+
+ --  David Albrecht <david@prefiat.com>  Fri, 14 Mar 2014 04:51:09 +0000

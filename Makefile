@@ -1,6 +1,6 @@
 PROJECT=mcp23s17
 SOURCES=src/mcp23s17.c
-LIBRARY=static
+LIBRARY=shared
 INCPATHS=
 LIBPATHS=
 LDFLAGS=
@@ -35,7 +35,7 @@ $(BINARY): $(OBJECTS)
     endif
 
 .c.o:
-	$(CC) $(INCFLAGS) $(CFLAGS) -fPIC $< -o $@
+	$(CC) $(INCFLAGS) $(CFLAGS) $(LDFLAGS) -fPIC $< -o $@
 
 distclean: clean
 	rm -f $(BINARY)
@@ -45,3 +45,7 @@ example: example.c
 
 clean:
 	rm -f $(OBJECTS)
+
+install: all
+	install -m 0755 $(BINARY) $(DESTDIR)/usr/lib
+	install -m 0644 src/mcp23s17.h $(DESTDIR)/usr/include/piface
