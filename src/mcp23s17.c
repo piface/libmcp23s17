@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdint.h>
 #include <unistd.h>
+#include <string.h>
+#include <errno.h>
 #include <fcntl.h>
 #include <sys/epoll.h>
 #include <sys/types.h>
@@ -18,9 +20,17 @@ static const char * spidev[2][2] = {
     {"/dev/spidev1.0", "/dev/spidev1.1"},
 };
 
+// epoll related vars
+// static int epoll_is_initialised = 0;
+static int gpio_pin_fd = -1;
+static int epoll_fd = -1;
+static struct epoll_event epoll_ctl_events;
+static struct epoll_event mcp23s17_epoll_events;
+
 
 // prototypes
 static uint8_t get_spi_control_byte(uint8_t rw_cmd, uint8_t hw_addr);
+static int init_epoll(void);
 
 
 int mcp23s17_open(int bus, int chip_select)
@@ -132,7 +142,7 @@ int mcp23s17_enable_interrupts()
     char str_gpio[3];
     char str_filenm[33];
 
-    if ((fd = open("/sys/class/gpio/export", O_WRONLY)) < 0) 
+    if ((fd = open("/sys/class/gpio/export", O_WRONLY)) < 0)
         return -1;
 
     len = snprintf(str_gpio, sizeof(str_gpio), "%d", GPIO_INTERRUPT_PIN);
@@ -173,35 +183,72 @@ int mcp23s17_disable_interrupts()
 
 int mcp23s17_wait_for_interrupt(int timeout)
 {
-    int n = -1;
-    char str_filenm[33];
+    int num_fds = -1;
 
-    snprintf(str_filenm, sizeof(str_filenm), "/sys/class/gpio/gpio%d/value", GPIO_INTERRUPT_PIN);
-    int epfd = epoll_create(1);
-    int fd = open(str_filenm, O_RDONLY | O_NONBLOCK);
-
-    if(fd > 0) {
-        struct epoll_event ev;
-        struct epoll_event events;
-        ev.events = EPOLLIN | EPOLLET;
-        ev.data.fd = fd;
-
-        epoll_ctl(epfd, EPOLL_CTL_ADD, fd, &ev);
-
-        // Ignore GPIO Initial Event
-        epoll_wait(epfd, &events, 1, 10);
-
-        // Wait for user event
-        n = epoll_wait(epfd, &events, 1, timeout); 
-
-        close(fd);
+    if (epoll_fd <= 0) {
+        if (!init_epoll()) {
+            return -1;
+        }
     }
 
-    return n;
+    // Wait for user event
+    num_fds = epoll_wait(epoll_fd, &mcp23s17_epoll_events, 1, timeout);
+
+    return num_fds;
 }
 
+static int init_epoll(void)
+{
+    // calculate the GPIO pin's path
+    char gpio_pin_filename[33];
+    snprintf(gpio_pin_filename,
+             sizeof(gpio_pin_filename),
+             "/sys/class/gpio/gpio%d/value",
+             GPIO_INTERRUPT_PIN);
 
+    // if we haven't already, create the epoll and the GPIO pin fd's
+    if(epoll_fd <= 0) {
+        epoll_fd = epoll_create(1);
+        if (epoll_fd <= 0) {
+            fprintf(stderr,
+                    "mcp23s17_wait_for_interrupt: There was a error during "
+                    "the epoll_create.\n"
+                    "Error is %s (errno=%d)\n",
+                    strerror(errno),
+                    errno);
+            return -1;
+        }
+        gpio_pin_fd = open(gpio_pin_filename, O_RDONLY | O_NONBLOCK);
+    }
 
+    if(gpio_pin_fd <= 0) {
+        // we haven't successfully opened the GPIO pin fd
+        fprintf(stderr,
+                "mcp23s17_wait_for_interrupt: Can't open fd <%s> <%d>.\n"
+                "Error is %s (errno=%d)\n",
+                gpio_pin_filename,
+                gpio_pin_fd,
+                strerror(errno),
+                errno);
+        return -1;
+    } else {
+        epoll_ctl_events.events = EPOLLIN | EPOLLET;
+        epoll_ctl_events.data.fd = gpio_pin_fd;
+
+        if(epoll_ctl(epoll_fd, EPOLL_CTL_ADD, gpio_pin_fd, &epoll_ctl_events) != 0) {
+            fprintf(stderr,
+                    "mcp23s17_wait_for_interrupt: There was a error "
+                    "during the epoll_ctl EPOLL_CTL_ADD.\n");
+            fprintf(stderr,
+                    "Error is %s (errno=%d)\n",
+                    strerror(errno),
+                    errno);
+        }
+        // Ignore GPIO Initial Event
+        epoll_wait(epoll_fd, &mcp23s17_epoll_events, 1, 10);
+        return 0;
+    }
+}
 
 
 /**

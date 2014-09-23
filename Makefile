@@ -43,5 +43,8 @@ distclean: clean
 example: example.c
 	gcc -o example example.c -Isrc/ -L. -lmcp23s17
 
+interrupt_example: interrupt_example.c
+	gcc -o interrupt_example interrupt_example.c -Isrc/ -L. -lmcp23s17
+
 clean:
 	rm -f $(OBJECTS)
