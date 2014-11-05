@@ -47,15 +47,18 @@ int mcp23s17_open(int bus, int chip_select)
     // initialise
     if (ioctl(fd, SPI_IOC_WR_MODE, &spi_mode) < 0) {
         fprintf(stderr, "mcp23s17_open: ERROR Could not set SPI mode.\n");
+	close(fd);
         return -1;
     }
     if (ioctl(fd, SPI_IOC_WR_BITS_PER_WORD, &spi_bpw) < 0) {
         fprintf(stderr,
                 "mcp23s17_open: ERROR Could not set SPI bits per word.\n");
+	close(fd);
         return -1;
     }
     if (ioctl(fd, SPI_IOC_WR_MAX_SPEED_HZ, &spi_speed) < 0) {
         fprintf(stderr, "mcp23s17_open: ERROR Could not set SPI speed.\n");
+	close(fd);
         return -1;
     }
 
