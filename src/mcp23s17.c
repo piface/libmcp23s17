@@ -189,7 +189,7 @@ int mcp23s17_wait_for_interrupt(int timeout)
     int num_fds = -1;
 
     if (epoll_fd <= 0) {
-        if (!init_epoll()) {
+        if (init_epoll() != 0) {
             return -1;
         }
     }
