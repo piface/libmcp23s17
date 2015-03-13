@@ -1,0 +1,13 @@
+Source: libmcp23s17
+Maintainer: David Albrecht <david@prefiat.com>
+Section: misc
+Priority: optional
+Standards-Version: 3.9.4
+Build-Depends: debhelper (>= 9)
+
+Package: libmcp23s17
+Architecture: armhf
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Microchip MCP23S17 SPI control library
+  C library with headers and compiled binary, for supporting I/O with the
+  Microchip MCP23S17 IC, over SPI. 
