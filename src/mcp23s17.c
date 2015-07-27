@@ -154,9 +154,14 @@ int mcp23s17_enable_interrupts()
     write(fd, str_gpio, len);
     close(fd);
 
+// I have somme problem with this fonction
+//I think thas the folder gpio25 have'nt too motch time to be creat by the raspberry
     snprintf(str_filenm, sizeof(str_filenm), "/sys/class/gpio/gpio%d/direction", GPIO_INTERRUPT_PIN);
-    if ((fd = open(str_filenm, O_WRONLY)) < 0)
-        return -1;
+    if ((fd = open(str_filenm, O_WRONLY)) < 0){
+    	usleep (1);
+    	if ((fd = open(str_filenm, O_WRONLY)) < 0)
+        	return -1;
+    }
 
     write(fd, "in", 3);
     close(fd);
