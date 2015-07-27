@@ -1,6 +1,11 @@
 Change Log
 ==========
 
+v0.3.3
+------
+- Added the "install" target to Makefile.
+- Small fixups and additions to README.md
+
 v0.3.2
 ------
 - Fixed issue #8 - added memset to clear transfer struct.
